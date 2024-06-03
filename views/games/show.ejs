@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
-    <header><a href="/games">Games List</a></header>
+    <%- include('../partials/nav') %>
+    
     <header><a href="/games/<%= gameDoc._id %>/edit">Edit Game</a></header>
     <h1><%= gameDoc.name %>, <%= gameDoc.releaseYear %></h1>
     <% if (gameDoc.isCompleted) { %>

@@ -99,7 +99,9 @@ app.delete('/games/:gameId', async function(req, res){
 
 
 app.get("/", function(req, res){
-    res.render('index.ejs')
+    res.render('home/index.ejs', {
+        title: "Games App"
+    })
 })
 
 app.listen(3000, function(){
