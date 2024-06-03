@@ -3,6 +3,7 @@ dotenv.config();
 const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
+const methodOverride = require('method-override')
 
 
 const app = express()
@@ -20,7 +21,8 @@ mongoose.connection.on('connected', function(){
 // =========== MiddleWare ============
 
 app.use(express.urlencoded({extended: false})); 
-app.use(morgan('dev'))
+app.use(methodOverride("_method"));
+app.use(morgan('dev'));
 
 
 // =========== Index Route ============
@@ -78,7 +80,7 @@ app.put('/games/:gameId', async function(req, res){
 // =========== Delete Route ============
 
 app.delete('/games/:gameId', async function(req, res){
-    await GameModel.findByIdAndDelete(req.params.id)
+    await GameModel.findByIdAndDelete(req.params.gameId)
     res.redirect('/games')
 })
 
