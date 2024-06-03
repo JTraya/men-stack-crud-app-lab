@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Game!</title>
+</head>
+<body>
+    <h1>Editing <%= gameDoc.name %></h1>
+    <form action="/games/<%= gameDoc._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="name" id="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="releaseYear" id="releaseYear">Release Year:</label>
+            <input type="number" name="releaseYear" id="releaseYear">    
+        </div>
+        <div>
+            <label for="isCompleted">Game Completed?</label>
+            <input type="checkbox" name="isCompleted" id="isCompleted">    
+        </div>
+        <button type="submit">Update Game</button>
+    </form>
+</body>
+</html>
