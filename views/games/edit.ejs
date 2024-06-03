@@ -10,15 +10,18 @@
     <form action="/games/<%= gameDoc._id %>?_method=PUT" method="POST">
         <div>
             <label for="name" id="name">Name:</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="<%= gameDoc.name %>">
         </div>
         <div>
             <label for="releaseYear" id="releaseYear">Release Year:</label>
-            <input type="number" name="releaseYear" id="releaseYear">    
+            <input type="number" name="releaseYear" id="releaseYear" value="<%= gameDoc.releaseYear %>">    
         </div>
         <div>
             <label for="isCompleted">Game Completed?</label>
-            <input type="checkbox" name="isCompleted" id="isCompleted">    
+            <input type="checkbox" name="isCompleted" id="isCompleted"
+            <% if (gameDoc.isCompleted) { %>
+             checked
+            <% } %>>    
         </div>
         <button type="submit">Update Game</button>
     </form>
