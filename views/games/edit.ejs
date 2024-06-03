@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Game!</title>
-</head>
-<body>
-    <h1>Editing <%= gameDoc.name %></h1>
+<%- include('../partials/header') %>
+
+<h1>Editing <%= gameDoc.name %></h1>
     <form action="/games/<%= gameDoc._id %>?_method=PUT" method="POST">
         <div>
             <label for="name" id="name">Name:</label>
@@ -25,5 +19,6 @@
         </div>
         <button type="submit">Update Game</button>
     </form>
-</body>
-</html>
+
+    
+    <%- include('../partials/footer') %>

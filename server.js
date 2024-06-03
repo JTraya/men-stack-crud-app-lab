@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
+const path = require('path')
 
 
 const app = express()
@@ -23,22 +24,28 @@ mongoose.connection.on('connected', function(){
 app.use(express.urlencoded({extended: false})); 
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, "public")))
 
 
 // =========== Index Route ============
 
 app.get('/games', async function(req, res){
 
-    const gameDocs = await GameModel.find({})
+    const gameDoc = await GameModel.find({})
 
-    res.render('games/index.ejs', {gameDocs: gameDocs})
+    res.render('games/index.ejs', {
+        gameDoc: gameDoc,
+        title: "Games List"
+    })
 })
 
 
 // =========== Create Route ============
 
 app.get('/games/new', function(req, res){
-    res.render('games/new.ejs')
+    res.render('games/new.ejs',{
+        title: "Add Game!"
+    })
 })
 
 app.post('/games', async function(req, res){
@@ -56,7 +63,10 @@ app.get('/games/:gameId', async function(req, res){
     
     const gameDoc = await GameModel.findById(id)
 
-    res.render('games/show.ejs', {gameDoc: gameDoc})
+    res.render('games/show.ejs', {
+        gameDoc: gameDoc,
+        title: gameDoc.name + 'Details'
+    })
 })
 
 // =========== Edit Route ============
@@ -66,7 +76,10 @@ app.get('/games/:gameId/edit', async function(req, res){
     const gameDoc = await GameModel.findById(id);
     // console.log(gameDoc)
 
-    res.render('games/edit.ejs', {gameDoc: gameDoc})
+    res.render('games/edit.ejs', {
+        gameDoc: gameDoc,
+        title: "Edit Game!"
+    })
 })
 
 app.put('/games/:gameId', async function(req, res){
