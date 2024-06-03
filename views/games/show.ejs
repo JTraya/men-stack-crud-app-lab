@@ -1,8 +1,11 @@
 <%- include('../partials/header') %>
 
     <%- include('../partials/nav') %>
-    
+
     <header><a href="/games/<%= gameDoc._id %>/edit">Edit Game</a></header>
+
+    </nav>
+
     <h1><%= gameDoc.name %>, <%= gameDoc.releaseYear %></h1>
     <% if (gameDoc.isCompleted) { %>
         <p><%= gameDoc.name %> has been completed! Congratulations!</p>
@@ -10,7 +13,7 @@
          <p><%= gameDoc.name %> has not yet been completed.</p>
     <% } %>
     <form action="/games/<%=gameDoc._id%>?_method=DELETE" method="POST">
-        <button>Delete Game</button>
+        <button id="delete-btn">Delete</button>
     </form>
 
 <%- include('../partials/footer') %>

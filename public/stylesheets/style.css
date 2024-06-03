@@ -1,3 +1,31 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: aqua;
+    background-color:aqua;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+}
+
+header {
+    padding: 8px;
+}
+
+#homeText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#delete-btn {
+    color: whitesmoke;
+    background-color: red;
+    padding: 5px;
 }
